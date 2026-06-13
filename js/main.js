@@ -61,6 +61,10 @@ function getOne(id) {
 }
 function showModalInfo(data) {
   const { id, title, price, description, category, image } = data;
+  let newDes = description;
+  if (description.length > 500) {
+    newDes = description.slice(0, 500) + "...";
+  }
   overlay.innerHTML = `
         <div class="modal-card">
           <button onclick = "closeView(${id})" class="modal-close-btn">x</button>
@@ -68,7 +72,7 @@ function showModalInfo(data) {
           <img src="${image}" alt="${description}" class="modal-img" />
           <h3 class="modal-title">${title}</h3>
           <span class="modal-category">${category}</span>
-          <p class="modal-description">${description}</p>
+          <p class="modal-description">${newDes}</p>
           <div class="modal-price">${price}</div>
 
           <button class="modal-btn">Add</button>
@@ -139,7 +143,4 @@ function refreshPage() {
   window.location.reload();
 }
 
-
-function addProduct() {
-    
-}
+function addProduct() {}
