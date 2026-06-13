@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/general.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-up">
+        <h2 class="logo">Uzum Market</h2>
+        <form action="" class="navbar-up-form">
+          <input
+            type="text"
+            placeholder="Search"
+            name="search"
+            class="navbar-up-form-input"
+          />
+        </form>
+        <p class="basket none">
+          <a href="./basket.html">🛒</a><span class="red">1</span>
+        </p>
+
+        <button class="navbar-up-login">Login</button>
+      </div>
+    </nav>
+    <div class="navbar-down">
+      <button class="navbar-down-electronic btn">Electronic</button>
+      <button class="navbar-down-men btn">Men's</button>
+      <button class="navbar-down-women btn">Women's</button>
+      <button class="navbar-down-jewelery btn">Jewelry</button>
+      <button class="navbar-down-refresh btn">Refresh</button>
+    </div>
+    <div class="main">
+      <img src="./images/uzum-main-img.png" alt="main-img" class="main-img" />
+      <div class="main-cards"></div>
+    </div>
+
+    <div class="view hidden">
+      <div class="modal-overlay"></div>
+    </div>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
