@@ -19,9 +19,7 @@
             class="navbar-up-form-input"
           />
         </form>
-        <p class="basket none">
-          <a href="./basket.html">🛒</a><span class="red">1</span>
-        </p>
+        <span class="red count">0</span>
 
         <button class="navbar-up-login">Login</button>
       </div>
@@ -40,6 +38,35 @@
 
     <div class="view hidden">
       <div class="modal-overlay"></div>
+    </div>
+    <div class="basket-modal hidden">
+      <div class="basket-overlay">
+        <div class="basket-card">
+          <button onclick="closeBasket()" class="basket-close">✕</button>
+
+          <img src="" alt="" class="basket-img" />
+
+          <h3 class="basket-title"></h3>
+
+          <p class="basket-price"></p>
+
+          <div class="basket-counter">
+            <button onclick="decreaseCount()" class="basket-minus">-</button>
+            <span class="basket-quantity">1</span>
+            <button onclick="increaseCount()" class="basket-plus">+</button>
+          </div>
+
+          <div class="basket-actions">
+            <button onclick="closeBasket()" class="basket-cancel">
+              Cancel
+            </button>
+
+            <button onclick="checkoutProduct()" class="basket-checkout">
+              Checkout
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="./js/main.js"></script>
   </body>

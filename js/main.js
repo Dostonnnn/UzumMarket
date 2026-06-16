@@ -34,7 +34,7 @@ function showProducts(data) {
               </div>
               <div class="main-cards-card-btns">
                 <button onclick="openView(${id})" class="main-cards-card-view">View</button>
-                <button  class="main-cards-card-add">Add</button>
+                <button onclick = "addToBasket(${id})"  class="main-cards-card-add">Add</button>
               </div>
             </div>
             </div>
@@ -75,7 +75,7 @@ function showModalInfo(data) {
           <p class="modal-description">${newDes}</p>
           <div class="modal-price">${price}</div>
 
-          <button class="modal-btn">Add</button>
+          <button onclick = "addToBasket(${id})" class="modal-btn">Add</button>
         </div>
 
     `;
@@ -87,9 +87,15 @@ const jewelery = document.querySelector(".navbar-down-jewelery");
 const men = document.querySelector(".navbar-down-men");
 const women = document.querySelector(".navbar-down-women");
 const refresh = document.querySelector(".navbar-down-refresh");
+const mainImg = document.querySelector(".main-img");
+const main = document.querySelector("main");
+
 electronic.addEventListener("click", (e) => {
   e.preventDefault();
-
+  if (mainImg) {
+    mainImg.src =
+      "https://images.uzum.uz/cs5s8f7frr8f0ihuot80/t_shop_cover_high.jpg";
+  }
   fetch("https://fakestoreapi.com/products")
     .then((response) => response.json())
     .then((data) => {
@@ -102,7 +108,9 @@ electronic.addEventListener("click", (e) => {
 
 jewelery.addEventListener("click", (e) => {
   e.preventDefault();
-
+  if (mainImg) {
+    mainImg.src = "../images/jewel.png";
+  }
   fetch("https://fakestoreapi.com/products")
     .then((response) => response.json())
     .then((data) => {
@@ -113,7 +121,9 @@ jewelery.addEventListener("click", (e) => {
 
 men.addEventListener("click", (e) => {
   e.preventDefault();
-
+  if (mainImg) {
+    mainImg.src = "../images/mens3.png";
+  }
   fetch("https://fakestoreapi.com/products")
     .then((response) => response.json())
     .then((data) => {
@@ -126,7 +136,9 @@ men.addEventListener("click", (e) => {
 
 women.addEventListener("click", (e) => {
   e.preventDefault();
-
+  if (mainImg) {
+    mainImg.src = "../images/womens2.png";
+  }
   fetch("https://fakestoreapi.com/products")
     .then((response) => response.json())
     .then((data) => {
@@ -143,4 +155,54 @@ function refreshPage() {
   window.location.reload();
 }
 
-function addProduct() {}
+// cartts
+const basketModal = document.querySelector(".basket-modal");
+const basketImg = document.querySelector(".basket-img");
+const basketTitle = document.querySelector(".basket-title");
+const basketPrice = document.querySelector(".basket-price");
+const basketQuantityText = document.querySelector(".basket-quantity");
+const count = document.querySelector(".count");
+
+let basketQuantity = 1;
+let selectedProduct = null;
+
+function addToBasket(id) {
+  fetch(`https://fakestoreapi.com/products/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      selectedProduct = data;
+      basketQuantity = 1;
+
+      basketImg.src = data.image;
+      basketTitle.innerHTML = data.title;
+      basketPrice.innerHTML = "$" + data.price.toFixed(2);
+      basketQuantityText.innerHTML = basketQuantity;
+
+      basketModal.classList.remove("hidden");
+      basketModal.classList.add("active");
+    });
+}
+
+function increaseCount() {
+  basketQuantity++;
+  basketQuantityText.innerHTML = basketQuantity;
+}
+
+function decreaseCount() {
+  if (basketQuantity > 1) {
+    basketQuantity--;
+    basketQuantityText.innerHTML = basketQuantity;
+  }
+}
+
+function closeBasket() {
+  basketModal.classList.remove("active");
+  basketModal.classList.add("hidden");
+}
+
+function checkoutProduct() {
+  let currentCount = Number(count.textContent);
+  count.textContent = currentCount + basketQuantity;
+  alert("Order confirmed successfully");
+  closeBasket();
+}
