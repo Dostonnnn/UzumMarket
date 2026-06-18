@@ -82,78 +82,82 @@ function showModalInfo(data) {
   view.classList.add("active");
 }
 
-const electronic = document.querySelector(".navbar-down-electronic");
-const jewelery = document.querySelector(".navbar-down-jewelery");
-const men = document.querySelector(".navbar-down-men");
-const women = document.querySelector(".navbar-down-women");
-const refresh = document.querySelector(".navbar-down-refresh");
 const mainImg = document.querySelector(".main-img");
 const main = document.querySelector("main");
 
-electronic.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (mainImg) {
-    mainImg.src =
-      "https://images.uzum.uz/cs5s8f7frr8f0ihuot80/t_shop_cover_high.jpg";
-  }
-  fetch("https://fakestoreapi.com/products")
-    .then((response) => response.json())
-    .then((data) => {
-      const filteredData = data.filter(
-        (item) => item.category === "electronics",
-      );
-      showProducts(filteredData);
-    });
+const electronic = document.querySelectorAll(".navbar-down-electronic");
+const jewelery = document.querySelectorAll(".navbar-down-jewelery");
+const men = document.querySelectorAll(".navbar-down-men");
+const women = document.querySelectorAll(".navbar-down-women");
+
+electronic.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (mainImg) {
+      mainImg.src =
+        "https://images.uzum.uz/cs5s8f7frr8f0ihuot80/t_shop_cover_high.jpg";
+    }
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((data) => {
+        const filteredData = data.filter(
+          (item) => item.category === "electronics",
+        );
+        showProducts(filteredData);
+      });
+  });
 });
 
-jewelery.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (mainImg) {
-    mainImg.src = "../images/jewel.png";
-  }
-  fetch("https://fakestoreapi.com/products")
-    .then((response) => response.json())
-    .then((data) => {
-      const filteredData = data.filter((item) => item.category === "jewelery");
-      showProducts(filteredData);
-    });
+jewelery.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (mainImg) {
+      mainImg.src = "../images/jewel.png";
+    }
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((data) => {
+        const filteredData = data.filter(
+          (item) => item.category === "jewelery",
+        );
+        showProducts(filteredData);
+      });
+  });
 });
 
-men.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (mainImg) {
-    mainImg.src = "../images/mens3.png";
-  }
-  fetch("https://fakestoreapi.com/products")
-    .then((response) => response.json())
-    .then((data) => {
-      const filteredData = data.filter(
-        (item) => item.category === "men's clothing",
-      );
-      showProducts(filteredData);
-    });
+men.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (mainImg) {
+      mainImg.src = "../images/mens3.png";
+    }
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((data) => {
+        const filteredData = data.filter(
+          (item) => item.category === "men's clothing",
+        );
+        showProducts(filteredData);
+      });
+  });
 });
 
-women.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (mainImg) {
-    mainImg.src = "../images/womens2.png";
-  }
-  fetch("https://fakestoreapi.com/products")
-    .then((response) => response.json())
-    .then((data) => {
-      const filteredData = data.filter(
-        (item) => item.category === "women's clothing",
-      );
-      showProducts(filteredData);
-    });
+women.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (mainImg) {
+      mainImg.src = "../images/womens2.png";
+    }
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((data) => {
+        const filteredData = data.filter(
+          (item) => item.category === "women's clothing",
+        );
+        showProducts(filteredData);
+      });
+  });
 });
-refresh.addEventListener("click", (e) => {
-  refreshPage();
-});
-function refreshPage() {
-  window.location.reload();
-}
 
 // cartts
 const basketModal = document.querySelector(".basket-modal");
@@ -206,3 +210,25 @@ function checkoutProduct() {
   alert("Order confirmed successfully");
   closeBasket();
 }
+// Kodning eng oxiriga joylashtiring (barcha funksiyalardan pastda)
+const swiper = new Swiper(".swiper", {
+  // Agar do'kon banneri bo'lsa, gorizontal (horizontal) qilgan ma'qul
+  direction: "horizontal",
+  loop: true,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+
+  // Sahifalash (Nuqtachalar)
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+
+  // Navigatsiya tugmalari
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});

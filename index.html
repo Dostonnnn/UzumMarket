@@ -6,33 +6,81 @@
     <title>Document</title>
     <link rel="stylesheet" href="./styles/general.css" />
     <link rel="stylesheet" href="./styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
   </head>
   <body>
     <nav class="navbar">
       <div class="navbar-up">
-        <h2 class="logo">Uzum Market</h2>
+        <div class="logo">
+          <img class="logo-img" src="./images/Link → SVG.png" alt="" />
+        </div>
+        <span class="navbar-up-catalog"><p class="catalog">Catalog</p></span>
         <form action="" class="navbar-up-form">
           <input
             type="text"
-            placeholder="Search"
+            placeholder="Mahsulotlar va turkumlar izlash"
             name="search"
             class="navbar-up-form-input"
           />
         </form>
-        <span class="red count">0</span>
-
-        <button class="navbar-up-login">Login</button>
+        <button class="navbar-up-login">
+          <img class="login-img" src="./images/SVG.png" alt="" />Kirish
+        </button>
+        <button class="navbar-up-login">
+          <img class="login-img" src="./images/Frame.png" alt="" />Saralangan
+        </button>
+        <button class="navbar-up-login">
+          <img class="login-img" src="./images/basket.png" alt="" />Savat
+        </button>
+      </div>
+      <div class="navbar-down">
+        <ul class="navbar-down-list">
+          <li class="navbar-down-electronic">Elektronika</li>
+          <li class="navbar-down-women">Erkaklar</li>
+          <li class="navbar-down-women">Ayollar</li>
+          <li class="navbar-down-jewelery">Zargarlik</li>
+          <li class="navbar-down-electronic">Elektronika</li>
+          <li class="navbar-down-women">Erkaklar</li>
+          <li class="navbar-down-women">Ayollar</li>
+          <li class="navbar-down-jewelery">Zargarlik</li>
+          <li class="navbar-down-electronic">Elektronika</li>
+          <li class="navbar-down-women">Erkaklar</li>
+          <li class="navbar-down-women">Ayollar</li>
+          <li class="navbar-down-jewelery">Zargarlik</li>
+        </ul>
       </div>
     </nav>
-    <div class="navbar-down">
-      <button class="navbar-down-electronic btn">Electronic</button>
-      <button class="navbar-down-men btn">Men's</button>
-      <button class="navbar-down-women btn">Women's</button>
-      <button class="navbar-down-jewelery btn">Jewelry</button>
-      <button class="navbar-down-refresh btn">Refresh</button>
-    </div>
+
     <div class="main">
-      <img src="./images/uzum-main-img.png" alt="main-img" class="main-img" />
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <img src="./images/uzum-main-img.png" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./images/mens3.png" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./images/womens2.png" alt="" />
+          </div>
+
+          ...
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+      </div>
       <div class="main-cards"></div>
     </div>
 
@@ -68,6 +116,8 @@
         </div>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
     <script src="./js/main.js"></script>
   </body>
 </html>
