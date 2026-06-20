@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product View</title>
+    <link rel="stylesheet" href="./styles/general.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-up">
+        <div
+          class="logo"
+          onclick="location.href = 'index.html'"
+          style="cursor: pointer"
+        >
+          <img class="logo-img" src="./images/Link → SVG.png" alt="" />
+        </div>
+        <span class="navbar-up-catalog"><p class="catalog">Catalog</p></span>
+        <form action="" class="navbar-up-form">
+          <input
+            type="text"
+            placeholder="Mahsulotlar va turkumlar izlash"
+            name="search"
+            class="navbar-up-form-input"
+          />
+        </form>
+        <button class="navbar-up-login">
+          <img class="login-img" src="./images/SVG.png" alt="" />Kirish
+        </button>
+        <button class="navbar-up-login">
+          <img class="login-img" src="./images/Frame.png" alt="" />Saralangan
+        </button>
+        <button class="navbar-up-login">
+          <img class="login-img" src="./images/basket.png" alt="" />Savat
+        </button>
+      </div>
+    </nav>
+
+    <div class="main">
+      <div class="modal-overlay"></div>
+    </div>
+
+    <script src="./js/cart.js"></script>
+  </body>
+</html>

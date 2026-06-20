@@ -45,13 +45,10 @@ function showProducts(data) {
 getProducts();
 
 function openView(id) {
-  view.classList.remove("hidden");
-  getOne(id);
+  localStorage.setItem("selectedProductId", id);
+  window.location.href = "cart.html";
 }
-function closeView() {
-  view.classList.remove("active");
-  view.classList.add("hidden");
-}
+
 const overlay = document.querySelector(".modal-overlay");
 
 function getOne(id) {
@@ -79,7 +76,6 @@ function showModalInfo(data) {
         </div>
 
     `;
-  view.classList.add("active");
 }
 
 const mainImg = document.querySelector(".main-img");
