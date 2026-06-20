@@ -3,14 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product View</title>
+    <title>Document</title>
     <link rel="stylesheet" href="./styles/general.css" />
     <link rel="stylesheet" href="./styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
   </head>
   <body>
     <nav class="navbar">
       <div class="navbar-up">
-        <div class="logo" onclick="location.href = 'index.html'">
+        <div class="logo">
           <img class="logo-img" src="./images/Link → SVG.png" alt="" />
         </div>
         <span class="navbar-up-catalog"><p class="catalog">Catalog</p></span>
@@ -34,10 +38,38 @@
       </div>
     </nav>
 
-    <div class="main2">
-      <div class="modal-overlay"></div>
+    <div class="basket-modal">
+      <div class="basket-overlay">
+        <div class="basket-card">
+          <button onclick="history.back()" class="basket-close">x</button>
+
+          <img src="" alt="" class="basket-img" />
+
+          <h3 class="basket-title"></h3>
+
+          <p class="basket-price"></p>
+
+          <div class="basket-counter">
+            <button onclick="decreaseCount()" class="basket-minus">-</button>
+            <span class="basket-quantity">1</span>
+            <button onclick="increaseCount()" class="basket-plus">+</button>
+          </div>
+
+          <div class="basket-actions">
+            <button onclick="history.back()" class="basket-cancel">
+              Cancel
+            </button>
+
+            <button onclick="checkoutProduct()" class="basket-checkout">
+              Checkout
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <script src="./js/cart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+    <script src="./js/main.js"></script>
   </body>
 </html>

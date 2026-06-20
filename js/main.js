@@ -157,58 +157,8 @@ women.forEach((btn) => {
 
 // cartts
 const basketModal = document.querySelector(".basket-modal");
-const basketImg = document.querySelector(".basket-img");
-const basketTitle = document.querySelector(".basket-title");
-const basketPrice = document.querySelector(".basket-price");
-const basketQuantityText = document.querySelector(".basket-quantity");
-const count = document.querySelector(".count");
-
-let basketQuantity = 1;
 let selectedProduct = null;
-
-function addToBasket(id) {
-  fetch(`https://fakestoreapi.com/products/${id}`)
-    .then((res) => res.json())
-    .then((data) => {
-      selectedProduct = data;
-      basketQuantity = 1;
-
-      basketImg.src = data.image;
-      basketTitle.innerHTML = data.title;
-      basketPrice.innerHTML = "$" + data.price.toFixed(2);
-      basketQuantityText.innerHTML = basketQuantity;
-
-      basketModal.classList.remove("hidden");
-      basketModal.classList.add("active");
-    });
-}
-
-function increaseCount() {
-  basketQuantity++;
-  basketQuantityText.innerHTML = basketQuantity;
-}
-
-function decreaseCount() {
-  if (basketQuantity > 1) {
-    basketQuantity--;
-    basketQuantityText.innerHTML = basketQuantity;
-  }
-}
-
-function closeBasket() {
-  basketModal.classList.remove("active");
-  basketModal.classList.add("hidden");
-}
-
-function checkoutProduct() {
-  let currentCount = Number(count.textContent);
-  count.textContent = currentCount + basketQuantity;
-  alert("Order confirmed successfully");
-  closeBasket();
-}
-// Kodning eng oxiriga joylashtiring (barcha funksiyalardan pastda)
 const swiper = new Swiper(".swiper", {
-  // Agar do'kon banneri bo'lsa, gorizontal (horizontal) qilgan ma'qul
   direction: "horizontal",
   loop: true,
   autoplay: {
@@ -216,15 +166,49 @@ const swiper = new Swiper(".swiper", {
     disableOnInteraction: false,
   },
 
-  // Sahifalash (Nuqtachalar)
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
   },
 
-  // Navigatsiya tugmalari
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
 });
+const basketImg = document.querySelector(".basket-img");
+const basketTitle = document.querySelector(".basket-title");
+const basketPrice = document.querySelector(".basket-price");
+const basketQuantityText = document.querySelector(".basket-quantity");
+let basketQuantity = 1;
+
+const productId = localStorage.getItem("basketProductId");
+function addToBasket(id) {
+  localStorage.setItem("basketProductId", id);
+  window.location.href = "basket.html";
+}
+if (productId) {
+  fetch(`https://fakestoreapi.com/products/${productId}`)
+    .then((res) => res.json())
+    .then((data) => {
+      basketImg.src = data.image;
+      basketTitle.textContent = data.title;
+      basketPrice.textContent = "$" + data.price.toFixed(2);
+    });
+}
+
+function increaseCount() {
+  basketQuantity++;
+  basketQuantityText.textContent = basketQuantity;
+}
+
+function decreaseCount() {
+  if (basketQuantity > 1) {
+    basketQuantity--;
+    basketQuantityText.textContent = basketQuantity;
+  }
+}
+
+function checkoutProduct() {
+  alert("Added");
+}
